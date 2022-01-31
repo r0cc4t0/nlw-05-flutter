@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nlw_05_flutter/core/core.dart';
 
 void main() {
-  runApp(AppWidget());
+  runApp(const AppWidget());
 }
 
 class MyApp extends StatelessWidget {
