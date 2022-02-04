@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nlw_05_flutter/home/home_page.dart';
-// import 'package:nlw_05_flutter/splash/splash_page.dart';
+import '../home/home_page.dart';
+// import '../splash/splash_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);

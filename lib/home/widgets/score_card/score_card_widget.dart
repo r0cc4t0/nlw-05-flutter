@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nlw_05_flutter/core/core.dart';
-import 'package:nlw_05_flutter/home/widgets/chart/chart_widget.dart';
+import '../../../core/core.dart';
+import '../../widgets/chart/chart_widget.dart';
 
 class ScoreCardWidget extends StatelessWidget {
   const ScoreCardWidget({Key? key}) : super(key: key);
@@ -10,11 +10,13 @@ class ScoreCardWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
-          height: 136,
-          decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.circular(15),
-          ),
+        height: 136,
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -43,7 +45,9 @@ class ScoreCardWidget extends StatelessWidget {
                 ),
               )
             ],
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

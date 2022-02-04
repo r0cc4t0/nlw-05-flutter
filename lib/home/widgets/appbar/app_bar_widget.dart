@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nlw_05_flutter/core/core.dart';
-import 'package:nlw_05_flutter/home/widgets/scorecard/score_card_widget.dart';
+import '../../../core/core.dart';
+import '../../widgets/score_card/score_card_widget.dart';
 
 class AppBarWidget extends PreferredSize {
   AppBarWidget({Key? key})

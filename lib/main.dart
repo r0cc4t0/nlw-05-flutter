@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nlw_05_flutter/core/core.dart';
+import 'core/core.dart';
 
 void main() {
   runApp(const AppWidget());

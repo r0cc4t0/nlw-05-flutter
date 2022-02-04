@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nlw_05_flutter/core/core.dart';
+import '../../../core/core.dart';
 
 class ChartWidget extends StatelessWidget {
   const ChartWidget({Key? key}) : super(key: key);
