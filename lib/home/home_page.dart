@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'widgets/appbar/app_bar_widget.dart';
-import 'widgets/level_button/level_button_widget.dart';
-import 'widgets/quiz_card/quiz_card_widget.dart';
+import './widgets/appbar/app_bar_widget.dart';
+import './widgets/level_button/level_button_widget.dart';
+import './widgets/quiz_card/quiz_card_widget.dart';
+import './home_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,10 +12,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final controller = HomeController();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.getUser();
+    controller.getQuizzes();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(),
+      appBar: AppBarWidget(user: controller.user!),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Column(
@@ -35,11 +45,16 @@ class _HomePageState extends State<HomePage> {
                 crossAxisCount: 2,
                 crossAxisSpacing: 8,
                 mainAxisSpacing: 8,
-                children: const [
-                  QuizCardWidget(),
-                  QuizCardWidget(),
-                  QuizCardWidget(),
-                ],
+                children: controller.quizzes!
+                    .map(
+                      (e) => QuizCardWidget(
+                        title: e.title,
+                        completed:
+                            '${e.questionAnswered}/${e.questions.length}',
+                        percent: e.questionAnswered / e.questions.length,
+                      ),
+                    )
+                    .toList(),
               ),
             ),
             const SizedBox(height: 16),
