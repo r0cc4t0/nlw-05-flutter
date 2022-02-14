@@ -1,23 +1,37 @@
-import './home_state.dart';
+import 'package:flutter/foundation.dart';
 import '../core/core.dart';
 import '../shared/models/user_model.dart';
 import '../shared/models/quiz_model.dart';
 import '../shared/models/question_model.dart';
 import '../shared/models/answer_model.dart';
+import './home_state.dart';
 
 class HomeController {
-  HomeState state = HomeState.empty;
+  final stateNotifier = ValueNotifier<HomeState>(HomeState.empty);
+  set state(HomeState state) => stateNotifier.value = state;
+  HomeState get state => stateNotifier.value;
+
   UserModel? user;
   List<QuizModel>? quizzes;
 
-  void getUser() {
+  void getUser() async {
+    state = HomeState.loading;
+
+    await Future.delayed(const Duration(seconds: 2));
+
     user = UserModel(
       name: 'r0cc4t0',
       photoUrl: 'https://avatars.githubusercontent.com/u/60143866?v=4',
     );
+
+    state = HomeState.success;
   }
 
-  void getQuizzes() {
+  void getQuizzes() async {
+    state = HomeState.loading;
+
+    await Future.delayed(const Duration(seconds: 2));
+
     quizzes = [
       QuizModel(
         title: 'NLW 5 - Trilha Flutter',
@@ -63,5 +77,7 @@ class HomeController {
         ],
       )
     ];
+
+    state = HomeState.success;
   }
 }
