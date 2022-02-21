@@ -5,6 +5,7 @@ import './widgets/level_button/level_button_widget.dart';
 import './widgets/quiz_card/quiz_card_widget.dart';
 import './home_controller.dart';
 import './home_state.dart';
+import '../challenge/challenge_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -58,6 +59,14 @@ class _HomePageState extends State<HomePage> {
                           completed:
                               '${e.questionAnswered}/${e.questions.length}',
                           percent: e.questionAnswered / e.questions.length,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ChallengePage(),
+                              ),
+                            );
+                          },
                         ),
                       )
                       .toList(),
