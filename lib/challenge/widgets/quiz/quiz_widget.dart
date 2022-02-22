@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../../core/core.dart';
 import '../answer/answer_widget.dart';
+import '../../../shared/models/question_model.dart';
 
 class QuizWidget extends StatelessWidget {
-  final String title;
+  final QuestionModel question;
 
-  const QuizWidget({Key? key, required this.title}) : super(key: key);
+  const QuizWidget({Key? key, required this.question}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,24 +14,18 @@ class QuizWidget extends StatelessWidget {
       children: [
         const SizedBox(height: 64),
         Text(
-          title,
+          question.title,
           style: AppTextStyles.heading,
         ),
         const SizedBox(height: 24),
-        const AnswerWidget(
-          title: 'Kit de desenvolvimento de interface de usuário',
-        ),
-        const AnswerWidget(
-          isRight: true,
-          isSelected: true,
-          title: 'Possibilita a criação de aplicativos compilados nativamente',
-        ),
-        const AnswerWidget(
-          title: 'Acho que é uma marca de café do Himalaia',
-        ),
-        const AnswerWidget(
-          title: 'Possibilita a criação de desktops que são muito incríveis',
-        ),
+        ...question.answers
+            .map(
+              (e) => AnswerWidget(
+                title: e.title,
+                isRight: e.isRight,
+              ),
+            )
+            .toList(),
       ],
     );
   }
