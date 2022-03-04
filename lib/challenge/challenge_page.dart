@@ -4,11 +4,17 @@ import './widgets/quiz/quiz_widget.dart';
 import './widgets/next_button/next_button_widget.dart';
 import '../shared/models/question_model.dart';
 import '../challenge/challenge_controller.dart';
+import '../result/result_page.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<QuestionModel> questions;
+  final String title;
 
-  const ChallengePage({Key? key, required this.questions}) : super(key: key);
+  const ChallengePage({
+    Key? key,
+    required this.questions,
+    required this.title,
+  }) : super(key: key);
 
   @override
   _ChallengePageState createState() => _ChallengePageState();
@@ -96,7 +102,15 @@ class _ChallengePageState extends State<ChallengePage> {
                     child: NextButtonWidget.green(
                       buttonLabel: 'Confirmar',
                       buttonOnTap: () {
-                        Navigator.pop(context);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ResultPage(
+                              title: widget.title,
+                              length: widget.questions.length,
+                            ),
+                          ),
+                        );
                       },
                     ),
                   ),

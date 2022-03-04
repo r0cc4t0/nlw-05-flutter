@@ -40,6 +40,17 @@ class NextButtonWidget extends StatelessWidget {
         onTap = buttonOnTap,
         super(key: key);
 
+  const NextButtonWidget.purple({
+    Key? key,
+    required String buttonLabel,
+    required VoidCallback buttonOnTap,
+  })  : label = buttonLabel,
+        backgroundColor = AppColors.purple,
+        fontColor = AppColors.white,
+        borderColor = AppColors.purple,
+        onTap = buttonOnTap,
+        super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
