@@ -5,11 +5,13 @@ import '../challenge/widgets/next_button/next_button_widget.dart';
 class ResultPage extends StatelessWidget {
   final String title;
   final int length;
+  final int result;
 
   const ResultPage({
     Key? key,
     required this.title,
     required this.length,
+    required this.result,
   }) : super(key: key);
 
   @override
@@ -40,7 +42,7 @@ class ResultPage extends StatelessWidget {
                         style: AppTextStyles.bodyBold,
                       ),
                       TextSpan(
-                        text: '\ncom $length de $length acertos.',
+                        text: '\ncom $result de $length acerto(s).',
                         style: AppTextStyles.body,
                       )
                     ],

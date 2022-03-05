@@ -4,7 +4,7 @@ import '../../../shared/models/answer_model.dart';
 
 class AnswerWidget extends StatelessWidget {
   final AnswerModel answer;
-  final VoidCallback onTap;
+  final ValueChanged onTap;
   final bool isSelected;
   final bool isDisabled;
 
@@ -40,7 +40,9 @@ class AnswerWidget extends StatelessWidget {
       child: IgnorePointer(
         ignoring: isDisabled,
         child: GestureDetector(
-          onTap: onTap,
+          onTap: () {
+            onTap(answer.isRight);
+          },
           child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
