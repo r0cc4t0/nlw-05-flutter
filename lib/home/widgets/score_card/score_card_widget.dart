@@ -3,7 +3,9 @@ import '../../../core/core.dart';
 import '../../widgets/chart/chart_widget.dart';
 
 class ScoreCardWidget extends StatelessWidget {
-  const ScoreCardWidget({Key? key}) : super(key: key);
+  final double percent;
+
+  const ScoreCardWidget({Key? key, required this.percent}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +22,9 @@ class ScoreCardWidget extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Expanded(
+              Expanded(
                 flex: 1,
-                child: ChartWidget(),
+                child: ChartWidget(percent: percent),
               ),
               Expanded(
                 flex: 3,
